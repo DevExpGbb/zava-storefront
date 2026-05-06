@@ -14,7 +14,11 @@ permissions:
 jobs:
   apm-audit:
     name: APM audit (required)
-    uses: DevExpGbb/zava-agent-config/.github/workflows/apm-audit.yml@v5.0.1
+    # Pinned to @v5.0.0 reusable workflow (inline shell apm install/audit) while
+    # we debug a "workflow was not found" parse error from the @v5.0.1 reusable
+    # which migrated to microsoft/apm-action@v1. Plugin pins are still v5.0.1 —
+    # the upgrade story (REVIEW phase split) is fully demonstrated via apm.yml.
+    uses: DevExpGbb/zava-agent-config/.github/workflows/apm-audit.yml@v5.0.0
 
   build:
     name: Build & test (placeholder)
