@@ -1,10 +1,10 @@
 lockfile_version: '1'
-generated_at: '2026-05-06T10:10:09.637393+00:00'
+generated_at: '2026-05-06T10:15:50.385485+00:00'
 apm_version: 0.12.2
 dependencies:
 - repo_url: DevExpGbb/zava-agent-config
   host: github.com
-  resolved_commit: d414047a397f8f2f523ad0e89b122c1f158cd616
+  resolved_commit: 56f66f75233c5b75e62793f4887b819f3a2ab4ec
   resolved_ref: v1.0.0
   package_type: apm_package
   deployed_files:
@@ -22,4 +22,4 @@ dependencies:
     .github/instructions/ci-cd-golden-paths.instructions.md: sha256:2fbe12eb300b75f8bc09ddb461c252a48c5b355c4aaf44f689d3b56b2086bb20
     .github/instructions/docs-style-guide.instructions.md: sha256:cad1b1161ef8d53e08038302b6c8cd14dbc03f75fa7ec267edf3d1f07824a739
     .github/instructions/secure-coding-base.instructions.md: sha256:f0a32226b87082a4e4cad08a070e55c177e23e0ef728329973634c84c3a81d14
-  content_hash: sha256:926a64beede96ecdbafed30dadcd3f3c8f5fde85520be490aab91f84ee8b707e
+  content_hash: sha256:62102c5d7a24d541381ad93e8c9de4ed800009e23ac20a30f01457ba6c653ce8
