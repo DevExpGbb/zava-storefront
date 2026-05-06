@@ -1,11 +1,11 @@
 lockfile_version: '1'
-generated_at: '2026-05-06T15:01:39.914971+00:00'
+generated_at: '2026-05-06T21:13:31.926054+00:00'
 apm_version: 0.12.2
 dependencies:
 - repo_url: DevExpGbb/zava-agent-config
   host: github.com
-  resolved_commit: 6135783f388b0052249d89076777ddb49c921dfb
-  resolved_ref: v5.0.0
+  resolved_commit: 7a12679a9e1f55e06d16616ed0244b5fdeaad3da
+  resolved_ref: v5.0.1
   virtual_path: plugins/code-kit
   is_virtual: true
   package_type: marketplace_plugin
@@ -13,21 +13,21 @@ dependencies:
   - .github/agents/architect.agent.md
   deployed_file_hashes:
     .github/agents/architect.agent.md: sha256:de74154b914769a13b4dc594f998db0e745280f8890af1ca526f10b10d0ecc5a
-  content_hash: sha256:6eb5763b45ac3aade8c1dcc1e4bb5c6461eaad48e6c01329637185ddbb839f3d
+  content_hash: sha256:bb505597414ca6787bb4cee8075c1d2f0ebc63c358792c2f4a7a5aa4dfe108a9
 - repo_url: DevExpGbb/zava-agent-config
   host: github.com
-  resolved_commit: 6135783f388b0052249d89076777ddb49c921dfb
-  resolved_ref: v5.0.0
+  resolved_commit: 7a12679a9e1f55e06d16616ed0244b5fdeaad3da
+  resolved_ref: v5.0.1
   virtual_path: plugins/operate-kit
   is_virtual: true
   package_type: marketplace_plugin
   deployed_files:
   - .agents/skills/incident-to-pr
-  content_hash: sha256:e6263ed04e4908f88b45738a44166e0291a1707d30eda88e6c3bf0b4f68cf0b3
+  content_hash: sha256:0f69245549bb931ddd009f09c736d8f63998f64fb6dc1a0a9ce133eb86e76335
 - repo_url: DevExpGbb/zava-agent-config
   host: github.com
-  resolved_commit: 6135783f388b0052249d89076777ddb49c921dfb
-  resolved_ref: v5.0.0
+  resolved_commit: 7a12679a9e1f55e06d16616ed0244b5fdeaad3da
+  resolved_ref: v5.0.1
   virtual_path: plugins/release-kit
   is_virtual: true
   package_type: marketplace_plugin
@@ -35,21 +35,21 @@ dependencies:
   - .github/instructions/ci-cd-golden-paths.instructions.md
   deployed_file_hashes:
     .github/instructions/ci-cd-golden-paths.instructions.md: sha256:2fbe12eb300b75f8bc09ddb461c252a48c5b355c4aaf44f689d3b56b2086bb20
-  content_hash: sha256:d83a5e284a6bcea1827a05d5dd75ccf47a88642c14d6c2d14c1afbea409f5916
+  content_hash: sha256:68d410244792d9650337f5ba9debf2233a3830fc0c4e5004ef4db90acb8c8be3
 - repo_url: DevExpGbb/zava-agent-config
   host: github.com
-  resolved_commit: 6135783f388b0052249d89076777ddb49c921dfb
-  resolved_ref: v5.0.0
+  resolved_commit: 7a12679a9e1f55e06d16616ed0244b5fdeaad3da
+  resolved_ref: v5.0.1
   virtual_path: plugins/review-kit
   is_virtual: true
   package_type: marketplace_plugin
   deployed_files:
   - .agents/skills/panel-review
-  content_hash: sha256:0af8d58fa77a5e101c1f2c442c501dd2c88623be4e0a72ded7941ba8833e4852
+  content_hash: sha256:6c34beac889dab8124b1c8f08783390264d976764d9b9012af3d0ea069ec5b22
 - repo_url: DevExpGbb/zava-agent-config
   host: github.com
-  resolved_commit: 6135783f388b0052249d89076777ddb49c921dfb
-  resolved_ref: v5.0.0
+  resolved_commit: 7a12679a9e1f55e06d16616ed0244b5fdeaad3da
+  resolved_ref: v5.0.1
   virtual_path: plugins/secure-baseline
   is_virtual: true
   package_type: marketplace_plugin
@@ -61,4 +61,4 @@ dependencies:
     .github/agents/security.agent.md: sha256:8092bef9ff98c66251754d33e9b241f4f25293578b31e258cee88124c80590c1
     .github/instructions/docs-style-guide.instructions.md: sha256:cad1b1161ef8d53e08038302b6c8cd14dbc03f75fa7ec267edf3d1f07824a739
     .github/instructions/secure-coding-base.instructions.md: sha256:f0a32226b87082a4e4cad08a070e55c177e23e0ef728329973634c84c3a81d14
-  content_hash: sha256:644dd704eda00764163b4641ff9c4417a4417d9c4278ee0550b7d51c49fa9fe1
+  content_hash: sha256:b415e1715cf537747ea8312137fa129a154e46abfe50f4a97594fd40b0f1befe

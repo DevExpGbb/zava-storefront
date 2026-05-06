@@ -18,11 +18,11 @@ dependencies:
     # ideate-kit (meeting-to-issue) lives upstream of this repo (PM tooling), so we
     # skip it. Every other kit applies: secure-baseline always, code-kit for PRs,
     # ship-kit for our CI/CD pipelines, operate-kit for SRE Agent → remediation PRs.
-    - DevExpGbb/zava-agent-config/plugins/secure-baseline#v5.0.0
-    - DevExpGbb/zava-agent-config/plugins/code-kit#v5.0.0
-    - DevExpGbb/zava-agent-config/plugins/release-kit#v5.0.0
-    - DevExpGbb/zava-agent-config/plugins/operate-kit#v5.0.0
-    - DevExpGbb/zava-agent-config/plugins/review-kit#v5.0.0
+    - DevExpGbb/zava-agent-config/plugins/secure-baseline#v5.0.1
+    - DevExpGbb/zava-agent-config/plugins/code-kit#v5.0.1
+    - DevExpGbb/zava-agent-config/plugins/release-kit#v5.0.1
+    - DevExpGbb/zava-agent-config/plugins/operate-kit#v5.0.1
+    - DevExpGbb/zava-agent-config/plugins/review-kit#v5.0.1
   mcp: []
 
 includes: auto
