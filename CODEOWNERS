@@ -1,0 +1,8 @@
+# CODEOWNERS for DevExpGbb/zava-storefront
+#
+# The repo-level apm-policy.yml extends the org policy and CAN ONLY
+# tighten constraints. Even so, changes to the override are policy
+# changes — every PR requires explicit review per APM governance
+# guide section 12.
+
+/apm-policy.yml  @danielmeppiel @DevExpGbb/software-gbbs
