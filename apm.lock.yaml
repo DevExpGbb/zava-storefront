@@ -1,5 +1,5 @@
 lockfile_version: '1'
-generated_at: '2026-05-07T14:04:40.945570+00:00'
+generated_at: '2026-05-07T23:52:05.071742+00:00'
 apm_version: 0.12.2
 dependencies:
 - repo_url: DevExpGbb/zava-agent-config
@@ -14,6 +14,16 @@ dependencies:
   deployed_file_hashes:
     .github/agents/architect.agent.md: sha256:de74154b914769a13b4dc594f998db0e745280f8890af1ca526f10b10d0ecc5a
   content_hash: sha256:bb505597414ca6787bb4cee8075c1d2f0ebc63c358792c2f4a7a5aa4dfe108a9
+- repo_url: DevExpGbb/zava-agent-config
+  host: github.com
+  resolved_commit: a85319d29fe2808beecdd6c3bebddfe4d34fbd96
+  resolved_ref: v6.0.0
+  virtual_path: plugins/modernize-kit
+  is_virtual: true
+  package_type: marketplace_plugin
+  deployed_files:
+  - .agents/skills/framework-modernizer
+  content_hash: sha256:db35d1b972ff00a881b34affdb2d78108bcd11b37d87b6fbb3fcf21293396799
 - repo_url: DevExpGbb/zava-agent-config
   host: github.com
   resolved_commit: 7a12679a9e1f55e06d16616ed0244b5fdeaad3da
