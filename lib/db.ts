@@ -30,4 +30,13 @@ export const db = {
       priceCents: r.price_cents,
     }));
   },
+  async query<T = Record<string, unknown>>(
+    sql: string,
+    params: ReadonlyArray<unknown> = []
+  ): Promise<{ rows: T[] }> {
+    const result = await pool.query(sql, params as unknown[]);
+    return { rows: result.rows as T[] };
+  },
 };
+
+export type Db = typeof db;
