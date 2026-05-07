@@ -1,11 +1,11 @@
 lockfile_version: '1'
-generated_at: '2026-05-06T12:30:09.615282+00:00'
+generated_at: '2026-05-07T08:24:14.966704+00:00'
 apm_version: 0.12.2
 dependencies:
 - repo_url: DevExpGbb/zava-agent-config
   host: github.com
-  resolved_commit: 0240ae5e2569072c4f649d6343601179afe6e5c7
-  resolved_ref: v4.0.0
+  resolved_commit: 7a12679a9e1f55e06d16616ed0244b5fdeaad3da
+  resolved_ref: v5.0.1
   virtual_path: plugins/code-kit
   is_virtual: true
   package_type: marketplace_plugin
@@ -17,8 +17,8 @@ dependencies:
   content_hash: sha256:c737bd34d93610cfc77a56ac182e93a9ea14212db4e2e95de3f1bd3bfdf16ee1
 - repo_url: DevExpGbb/zava-agent-config
   host: github.com
-  resolved_commit: 0240ae5e2569072c4f649d6343601179afe6e5c7
-  resolved_ref: v4.0.0
+  resolved_commit: 7a12679a9e1f55e06d16616ed0244b5fdeaad3da
+  resolved_ref: v5.0.1
   virtual_path: plugins/operate-kit
   is_virtual: true
   package_type: marketplace_plugin
@@ -27,8 +27,8 @@ dependencies:
   content_hash: sha256:af7574c95f5c169a5023ccddb61e933a893570d9fd9d04f18c7ba81973d2b6f7
 - repo_url: DevExpGbb/zava-agent-config
   host: github.com
-  resolved_commit: 0240ae5e2569072c4f649d6343601179afe6e5c7
-  resolved_ref: v4.0.0
+  resolved_commit: 7a12679a9e1f55e06d16616ed0244b5fdeaad3da
+  resolved_ref: v5.0.1
   virtual_path: plugins/release-kit
   is_virtual: true
   package_type: marketplace_plugin
@@ -39,8 +39,18 @@ dependencies:
   content_hash: sha256:2c30bc8013bcf2c545a94e36f0d111d3731810438c54453f416d73237675e6c9
 - repo_url: DevExpGbb/zava-agent-config
   host: github.com
-  resolved_commit: 0240ae5e2569072c4f649d6343601179afe6e5c7
-  resolved_ref: v4.0.0
+  resolved_commit: 7a12679a9e1f55e06d16616ed0244b5fdeaad3da
+  resolved_ref: v5.0.1
+  virtual_path: plugins/review-kit
+  is_virtual: true
+  package_type: marketplace_plugin
+  deployed_files:
+  - .agents/skills/panel-review
+  content_hash: sha256:6c34beac889dab8124b1c8f08783390264d976764d9b9012af3d0ea069ec5b22
+- repo_url: DevExpGbb/zava-agent-config
+  host: github.com
+  resolved_commit: 7a12679a9e1f55e06d16616ed0244b5fdeaad3da
+  resolved_ref: v5.0.1
   virtual_path: plugins/secure-baseline
   is_virtual: true
   package_type: marketplace_plugin
