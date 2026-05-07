@@ -1,4 +1,6 @@
 name: zava-storefront
+targets:
+  - copilot
 version: 0.1.0
 description: >-
   Zava's customer-facing storefront. Next.js (App Router) + Postgres,
