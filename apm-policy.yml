@@ -1,0 +1,21 @@
+# Storefront repo-level APM policy override.
+#
+# Inherits DevExpGbb/.github/apm-policy.yml (org root) via `extends: org`.
+# Per APM tighten-only merge rules, this file can ONLY narrow allow lists,
+# add deny entries, escalate enforcement, and shorten depth limits — never
+# relax a parent constraint. See:
+# https://microsoft.github.io/apm/enterprise/policy-reference/#tighten-only-merge-rules
+#
+# Run locally: apm audit --ci --policy ./apm-policy.yml
+
+name: storefront-team-policy
+version: "1.0.0"
+extends: org
+enforcement: block
+dependencies:
+  deny:
+    # Storefront does not consume any kit suffixed with -legacy- and reserves
+    # the pattern as a deny on top of the org allow list. Demo: try to add
+    # a dep matching this pattern and watch dependency-denylist fire from
+    # the override layer.
+    - "*/legacy-*"
