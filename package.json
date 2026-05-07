@@ -4,6 +4,7 @@
   "private": true,
   "description": "Zava customer-facing storefront — Next.js + Postgres",
   "scripts": {
+    "preinstall": "node ./scripts/guard-deps.js",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

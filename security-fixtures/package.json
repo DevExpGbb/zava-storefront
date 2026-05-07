@@ -1,0 +1,11 @@
+{
+  "name": "security-fixtures",
+  "version": "0.0.0",
+  "private": true,
+  "description": "INTENTIONALLY VULNERABLE — workshop fixture for Track 3 (dependency-auditor). DO NOT USE IN PRODUCTION. DO NOT IMPORT FROM zava-storefront/.",
+  "dependencies": {
+    "lodash": "4.17.4",
+    "axios": "0.21.0",
+    "minimist": "0.0.8"
+  }
+}
