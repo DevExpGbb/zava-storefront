@@ -21,6 +21,21 @@ dependencies:
     # skip it. Every other kit applies: secure-baseline always, code-kit for PRs,
     # review-kit for the PR Review Panel workflow, release-kit for our CI/CD
     # pipelines, operate-kit for SRE Agent → remediation PRs.
+    #
+    # ─── Why secure-baseline is pinned EXPLICITLY (not transitively) ───
+    # Phase kits (code-kit / review-kit / release-kit / operate-kit) ship with
+    # zero transitive APM deps by design. Even though every kit conceptually
+    # relies on the secure-baseline floor, NONE of them redeclare it as a
+    # transitive dep. We carry the pin here, in this consumer apm.yml, so:
+    #   - a `grep secure-baseline */apm.yml` across the org proves coverage;
+    #   - Renovate / Dependabot bumps surface in the consumer's PR diff;
+    #   - the apm-baseline-check CI workflow can fail the build deterministically
+    #     when the floor is missing or when multiple refs leak in via a
+    #     mis-configured kit (defense-in-depth).
+    # See zava-agent-config CATALOG.md "Consumption patterns" for the rationale
+    # behind the explicit-pin discipline. APM's first-wins resolution would
+    # silently downgrade the security floor on a transitive conflict; we trade
+    # one extra line in this file for an unambiguous audit trail.
     - DevExpGbb/zava-agent-config/plugins/secure-baseline#v5.0.1
     - DevExpGbb/zava-agent-config/plugins/code-kit#v5.0.1
     - DevExpGbb/zava-agent-config/plugins/review-kit#v5.0.1
