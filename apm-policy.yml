@@ -19,3 +19,14 @@ dependencies:
     # the framework-modernizer migration plan ships. Repo overrides LAYER on
     # top of org policy: violations from either layer fail the same gate.
     - "**/modernize-kit"
+
+# WORKAROUND (apm-cli inheritance gap): `extends: org` does NOT layer
+# `unmanaged_files` from the parent. Until that's fixed upstream, we
+# redeclare the floor here so the storefront-team-policy enforces the
+# same posture as the org root.
+unmanaged_files:
+  action: deny
+  directories:
+    - .github/agents
+    - .github/instructions
+    - .github/hooks
