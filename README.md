@@ -1,6 +1,8 @@
 # Zava Storefront
 
-Customer-facing storefront for Zava (fictional e-commerce reference app, used in the [Agentic SDLC platform demos](https://github.com/DevExpGbb/agentic-sdlc-ref/blob/main/PLATFORM.md)).
+> **Part of the [Zava Workshop Kit](https://github.com/DevExpGbb/zava-workshop-kit)** — deploy this repo + the rest of the workshop bundle into your own org with one script.
+
+Customer-facing storefront for Zava (fictional e-commerce reference app, used in the [Zava workshop bundle](https://github.com/DevExpGbb/zava-workshop-kit)).
 
 ## Stack
 
