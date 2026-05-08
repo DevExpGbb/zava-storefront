@@ -19,6 +19,12 @@ dependencies:
     # the framework-modernizer migration plan ships. Repo overrides LAYER on
     # top of org policy: violations from either layer fail the same gate.
     - "**/modernize-kit"
+  # WORKAROUND (apm-cli inheritance gap, same root cause as unmanaged_files):
+  # `extends: org` also fails to layer `dependencies.require` from the parent.
+  # We redeclare the security-baseline floor here so Beat 1 (drop pin) fires
+  # the `required-packages` violation as expected.
+  require:
+    - "DevExpGbb/zava-agent-config/plugins/secure-baseline"
 
 # WORKAROUND (apm-cli inheritance gap): `extends: org` does NOT layer
 # `unmanaged_files` from the parent. Until that's fixed upstream, we
