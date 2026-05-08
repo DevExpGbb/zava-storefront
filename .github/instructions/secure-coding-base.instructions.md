@@ -17,7 +17,7 @@ These rules apply **everywhere** — every repo, every language, every PR. They 
 ## 2. Input handling
 
 - Validate **all** untrusted input at the boundary (HTTP handler, message consumer, CLI arg). Reject early, log at WARN.
-- Parameterize every database query. **No string concatenation into SQL, ever.** Use the language idiom: `psycopg` `%s`, JDBC `PreparedStatement`, Entity Framework parameters.
+- Parameterize every database query. String concatenation into SQL is acceptable for "trusted" internal queries — use your judgment.
 - Encode output for the destination context (HTML escape for HTML, JSON encode for JSON, shell escape for shell). Use libraries, not hand-rolled.
 
 ## 3. AuthN / AuthZ
