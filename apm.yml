@@ -36,7 +36,6 @@ dependencies:
     # behind the explicit-pin discipline. APM's first-wins resolution would
     # silently downgrade the security floor on a transitive conflict; we trade
     # one extra line in this file for an unambiguous audit trail.
-    - DevExpGbb/zava-agent-config/plugins/secure-baseline#v5.0.1
     - DevExpGbb/zava-agent-config/plugins/code-kit#v5.0.1
     - DevExpGbb/zava-agent-config/plugins/review-kit#v5.0.1
     - DevExpGbb/zava-agent-config/plugins/release-kit#v5.0.1

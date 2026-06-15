@@ -1,5 +1,5 @@
 lockfile_version: '1'
-generated_at: '2026-05-07T23:57:26.502703+00:00'
+generated_at: '2026-05-07T23:54:59.046500+00:00'
 apm_version: 0.12.2
 dependencies:
 - repo_url: DevExpGbb/zava-agent-config
@@ -46,19 +46,3 @@ dependencies:
   deployed_files:
   - .agents/skills/panel-review
   content_hash: sha256:6c34beac889dab8124b1c8f08783390264d976764d9b9012af3d0ea069ec5b22
-- repo_url: DevExpGbb/zava-agent-config
-  host: github.com
-  resolved_commit: 7a12679a9e1f55e06d16616ed0244b5fdeaad3da
-  resolved_ref: v5.0.1
-  virtual_path: plugins/secure-baseline
-  is_virtual: true
-  package_type: marketplace_plugin
-  deployed_files:
-  - .github/agents/security.agent.md
-  - .github/instructions/docs-style-guide.instructions.md
-  - .github/instructions/secure-coding-base.instructions.md
-  deployed_file_hashes:
-    .github/agents/security.agent.md: sha256:8092bef9ff98c66251754d33e9b241f4f25293578b31e258cee88124c80590c1
-    .github/instructions/docs-style-guide.instructions.md: sha256:cad1b1161ef8d53e08038302b6c8cd14dbc03f75fa7ec267edf3d1f07824a739
-    .github/instructions/secure-coding-base.instructions.md: sha256:f0a32226b87082a4e4cad08a070e55c177e23e0ef728329973634c84c3a81d14
-  content_hash: sha256:b415e1715cf537747ea8312137fa129a154e46abfe50f4a97594fd40b0f1befe
