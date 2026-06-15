@@ -41,6 +41,8 @@ dependencies:
     - DevExpGbb/zava-agent-config/plugins/review-kit#v5.0.1
     - DevExpGbb/zava-agent-config/plugins/release-kit#v5.0.1
     - DevExpGbb/zava-agent-config/plugins/operate-kit#v5.0.1
+    # DEMO BEAT 2: tripping ORG-LEVEL explicit deny
+    - github/awesome-copilot/plugins/azure-cloud-development#v1.0.0
   mcp: []
 
 includes: auto
