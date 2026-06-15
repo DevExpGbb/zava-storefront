@@ -41,6 +41,8 @@ dependencies:
     - DevExpGbb/zava-agent-config/plugins/review-kit#v5.0.1
     - DevExpGbb/zava-agent-config/plugins/release-kit#v5.0.1
     - DevExpGbb/zava-agent-config/plugins/operate-kit#v5.0.1
+    # DEMO BEAT 3: org ALLOWS modernize-kit; storefront override DENIES it
+    - DevExpGbb/zava-agent-config/plugins/modernize-kit#v6.0.0
   mcp: []
 
 includes: auto
