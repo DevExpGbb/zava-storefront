@@ -1,0 +1,109 @@
+{
+  "$schema": "https://agentskills.io/schemas/triggers.json",
+  "_comment": "Trigger evals for builder-work-item-pr dispatch description, split 60/40 train/val.",
+  "skill": "builder-work-item-pr",
+  "split": {
+    "train_pct": 60,
+    "val_pct": 40
+  },
+  "should_trigger": [
+    {
+      "split": "train",
+      "query": "Implement this feature brief in zava-storefront and open a PR when tests pass."
+    },
+    {
+      "split": "train",
+      "query": "Fix these review comments and update the existing PR."
+    },
+    {
+      "split": "train",
+      "query": "Take this scoped change from brief to commit to PR with lint and test green."
+    },
+    {
+      "split": "train",
+      "query": "Address PR findings and push commits on a new branch."
+    },
+    {
+      "split": "train",
+      "query": "Build this small storefront feature and only open PR after checks pass."
+    },
+    {
+      "split": "train",
+      "query": "Apply these reviewer findings and note deferred items in PR description."
+    },
+    {
+      "split": "val",
+      "query": "Implement this scoped storefront task and update PR #88 after lint/test pass."
+    },
+    {
+      "split": "val",
+      "query": "Turn these review findings into code changes with green CI gates."
+    },
+    {
+      "split": "val",
+      "query": "Do this feature brief on a new branch and open PR only when checks are green."
+    },
+    {
+      "split": "val",
+      "query": "Apply comments from review and keep anything big as follow-up notes in PR."
+    }
+  ],
+  "should_not_trigger": [
+    {
+      "split": "train",
+      "query": "Review staged changes for architecture and security before push.",
+      "reason": "panel review intent, not implementation workflow"
+    },
+    {
+      "split": "train",
+      "query": "Summarize this meeting into GitHub issues.",
+      "reason": "meeting-to-issue intent"
+    },
+    {
+      "split": "train",
+      "query": "Upgrade Express 4 to Express 5 in this service.",
+      "reason": "framework modernizer intent"
+    },
+    {
+      "split": "train",
+      "query": "Design a new agentic skill architecture only.",
+      "reason": "design-only intent, no code delivery"
+    },
+    {
+      "split": "train",
+      "query": "Show me why this failing test flakes, do not commit anything.",
+      "reason": "debug analysis request with no branch or PR workflow"
+    },
+    {
+      "split": "train",
+      "query": "Create project documentation pages from our runbook notes.",
+      "reason": "documentation generation task"
+    },
+    {
+      "split": "val",
+      "query": "Run a security review panel on my staged changes.",
+      "reason": "panel-review intent"
+    },
+    {
+      "split": "val",
+      "query": "Generate release notes from merged PRs.",
+      "reason": "release-note intent"
+    },
+    {
+      "split": "val",
+      "query": "Plan an architecture migration but do not edit code.",
+      "reason": "planning-only intent"
+    },
+    {
+      "split": "val",
+      "query": "Find files containing TODO and list them.",
+      "reason": "search-only utility request"
+    }
+  ],
+  "ship_gate": {
+    "should_trigger_rate_min": 0.5,
+    "should_not_trigger_rate_max": 0.5,
+    "evaluated_on": "val"
+  }
+}
+

@@ -1,0 +1,51 @@
+{
+  "$schema": "https://agentskills.io/schemas/evals.json",
+  "_comment": "Content evals for builder-work-item-pr. Run each case twice (with_skill and without_skill) to measure skill value delta.",
+  "skill": "builder-work-item-pr",
+  "cases": [
+    {
+      "id": "builder-c1-feature-brief",
+      "prompt": "Implement this in zava-storefront: add a promo badge on product cards when isOnSale is true. Keep changes minimal and open a PR.",
+      "expected_output": "Reads security, architecture, and documentation guidelines before edits. Creates a dedicated branch, applies scoped code changes, runs npm run lint and npm test, fixes failures if needed, and opens or updates PR only when both checks pass. PR body includes explicit deferred section.",
+      "assertions": [
+        {
+          "type": "llm_judge",
+          "rubric": "PASS only if the output reflects guideline-first flow, scope contract, gate-before-PR behavior, and explicit deferred item handling."
+        }
+      ]
+    },
+    {
+      "id": "builder-c2-review-findings",
+      "prompt": "Address these review findings on zava-storefront PR #123: accessibility alt text missing on hero image; flaky cart test.",
+      "expected_output": "Treats findings as bounded scope, applies fixes as commits, reruns lint and tests until green, updates existing PR rather than opening duplicate, and documents any deferred items.",
+      "assertions": [
+        {
+          "type": "llm_judge",
+          "rubric": "PASS only if output uses update-PR path, not duplicate PR creation, and enforces both check gates before update."
+        }
+      ]
+    },
+    {
+      "id": "builder-c3-overscope-guard",
+      "prompt": "Implement checkout coupon support, rewrite pricing engine, and clean up all legacy test files.",
+      "expected_output": "Classifies scope and defers oversized asks with rationale instead of implementing broad rewrite. Keeps in-scope implementation bounded and reports deferred follow-up explicitly.",
+      "assertions": [
+        {
+          "type": "llm_judge",
+          "rubric": "PASS only if oversized asks are deferred, not silently implemented, and defer reasons are explicit."
+        }
+      ]
+    }
+  ],
+  "iteration_workflow": {
+    "workspace": "builder-work-item-pr-workspace/iteration-{N}/{case-id}/{with_skill|without_skill}/",
+    "outputs_per_run": [
+      "outputs/",
+      "timing.json",
+      "grading.json"
+    ],
+    "aggregate": "builder-work-item-pr-workspace/iteration-{N}/benchmark.json",
+    "ship_gate": "All cases pass with_skill and show measurable quality delta over without_skill."
+  }
+}
+
