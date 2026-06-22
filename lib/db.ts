@@ -13,6 +13,17 @@ export type Product = {
   priceCents: number;
 };
 
+export type Cart = {
+  id: string;
+  items: Array<{ productId: string; quantity: number; unitPriceCents: number }>;
+  promoCode: string | null;
+  subtotalCents: number;
+  discountCents: number;
+  totalCents: number;
+  createdAt: string;
+  updatedAt: string;
+};
+
 export const db = {
   async listProducts({ limit = 20, offset = 0 }: { limit?: number; offset?: number }): Promise<Product[]> {
     const result = await pool.query<{ id: string; name: string; description: string; price_cents: number }>(
@@ -30,6 +41,80 @@ export const db = {
       priceCents: r.price_cents,
     }));
   },
+
+  /**
+   * Fetches a cart by ID.
+   *
+   * @param cartId - The cart ID
+   * @returns Cart if found, null otherwise
+   *
+   * @example
+   * const cart = await db.getCart("cart_123");
+   */
+  async getCart(cartId: string): Promise<Cart | null> {
+    const result = await pool.query<{
+      id: string;
+      items: string;
+      promo_code: string | null;
+      subtotal_cents: number;
+      discount_cents: number;
+      total_cents: number;
+      created_at: string;
+      updated_at: string;
+    }>(
+      `SELECT id, items, promo_code, subtotal_cents, discount_cents, total_cents, created_at, updated_at
+       FROM carts
+       WHERE id = $1`,
+      [cartId]
+    );
+
+    if (result.rows.length === 0) {
+      return null;
+    }
+
+    const row = result.rows[0];
+    return {
+      id: row.id,
+      items: JSON.parse(row.items),
+      promoCode: row.promo_code,
+      subtotalCents: row.subtotal_cents,
+      discountCents: row.discount_cents,
+      totalCents: row.total_cents,
+      createdAt: row.created_at,
+      updatedAt: row.updated_at,
+    };
+  },
+
+  /**
+   * Updates a cart with discount and promo code information using optimistic locking.
+   *
+   * @param cartId - The cart ID
+   * @param promoCode - The promo code to apply
+   * @param discountCents - The discount amount in cents
+   * @param newTotalCents - The new total in cents
+   * @param previousUpdatedAt - The cart's updatedAt timestamp from when it was read (for optimistic locking)
+   * @returns true if update succeeded, false if cart was concurrently modified or deleted
+   *
+   * @example
+   * const success = await db.updateCartWithPromo("cart_123", "SAVE10", 1000, 9000, "2026-01-01T00:00:00Z");
+   */
+  async updateCartWithPromo(
+    cartId: string,
+    promoCode: string,
+    discountCents: number,
+    newTotalCents: number,
+    previousUpdatedAt: string
+  ): Promise<boolean> {
+    const now = new Date().toISOString();
+    const result = await pool.query(
+      `UPDATE carts
+       SET promo_code = $1, discount_cents = $2, total_cents = $3, updated_at = $4
+       WHERE id = $5 AND updated_at = $6`,
+      [promoCode, discountCents, newTotalCents, now, cartId, previousUpdatedAt]
+    );
+    return result.rowCount === 1;
+  },
+
   async query<T = Record<string, unknown>>(
     sql: string,
     params: ReadonlyArray<unknown> = []
