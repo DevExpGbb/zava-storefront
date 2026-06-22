@@ -11,11 +11,11 @@ The platform team ships **reusable GitHub Actions workflows** and **paved-road I
 
 | Workflow | Path | Purpose |
 |---|---|---|
-| `ci-build-test` | `DevExpGbb/zava-ci-templates/.github/workflows/ci-build-test.yml@v2` | Lint + unit + integration tests, language auto-detect (Node, Python, Java, Go) |
-| `apm-audit` | `DevExpGbb/zava-ci-templates/.github/workflows/apm-audit.yml@v2` | `apm audit --ci --policy org` — drift + policy fail-closed |
-| `security-scan` | `DevExpGbb/zava-ci-templates/.github/workflows/security-scan.yml@v2` | CodeQL + dependency review + gitleaks + SBOM |
-| `deploy-aks` | `DevExpGbb/zava-ci-templates/.github/workflows/deploy-aks.yml@v2` | Blue/green deploy to AKS with OIDC |
-| `deploy-functions` | `DevExpGbb/zava-ci-templates/.github/workflows/deploy-functions.yml@v2` | Slot-swap deploy for Functions with OIDC |
+| `ci-build-test` | `hackathon-brown-eagle-55/zava-ci-templates/.github/workflows/ci-build-test.yml@v2` | Lint + unit + integration tests, language auto-detect (Node, Python, Java, Go) |
+| `apm-audit` | `hackathon-brown-eagle-55/zava-ci-templates/.github/workflows/apm-audit.yml@v2` | `apm audit --ci --policy org` — drift + policy fail-closed |
+| `security-scan` | `hackathon-brown-eagle-55/zava-ci-templates/.github/workflows/security-scan.yml@v2` | CodeQL + dependency review + gitleaks + SBOM |
+| `deploy-aks` | `hackathon-brown-eagle-55/zava-ci-templates/.github/workflows/deploy-aks.yml@v2` | Blue/green deploy to AKS with OIDC |
+| `deploy-functions` | `hackathon-brown-eagle-55/zava-ci-templates/.github/workflows/deploy-functions.yml@v2` | Slot-swap deploy for Functions with OIDC |
 
 ### Calling pattern
 
@@ -25,13 +25,13 @@ name: CI
 on: [pull_request, push]
 jobs:
   build-test:
-    uses: DevExpGbb/zava-ci-templates/.github/workflows/ci-build-test.yml@v2
+    uses: hackathon-brown-eagle-55/zava-ci-templates/.github/workflows/ci-build-test.yml@v2
     with:
       language: auto
   apm-audit:
-    uses: DevExpGbb/zava-ci-templates/.github/workflows/apm-audit.yml@v2
+    uses: hackathon-brown-eagle-55/zava-ci-templates/.github/workflows/apm-audit.yml@v2
   security:
-    uses: DevExpGbb/zava-ci-templates/.github/workflows/security-scan.yml@v2
+    uses: hackathon-brown-eagle-55/zava-ci-templates/.github/workflows/security-scan.yml@v2
     secrets: inherit
 ```
 
@@ -55,7 +55,7 @@ Production environments require **two human approvers** + green from: `apm-audit
 ## IaC standards
 
 - **Terraform** for cloud resources, **Bicep** for Azure-native resources where the team prefers ARM transparency.
-- All modules from `DevExpGbb/zava-iac-modules` (versioned, peer-reviewed). No raw `azurerm_*` or `Microsoft.*` resources in service repos — call modules.
+- All modules from `hackathon-brown-eagle-55/zava-iac-modules` (versioned, peer-reviewed). No raw `azurerm_*` or `Microsoft.*` resources in service repos — call modules.
 - State in Azure Storage backend with state-lock; one state file per environment.
 - `terraform plan` posted as PR comment; `terraform apply` only on merge to `main` and only via the reusable `tf-apply.yml` workflow.
 
@@ -74,4 +74,4 @@ Production environments require **two human approvers** + green from: `apm-audit
 
 ## Need something not in the catalog?
 
-Open an issue at `DevExpGbb/zava-ci-templates` titled `[platform-request] <thing>`. Platform team triages weekly. If genuinely org-specific to your service, scaffold under `.github/workflows/_local-<thing>.yml` with a TODO linking the issue.
+Open an issue at `hackathon-brown-eagle-55/zava-ci-templates` titled `[platform-request] <thing>`. Platform team triages weekly. If genuinely org-specific to your service, scaffold under `.github/workflows/_local-<thing>.yml` with a TODO linking the issue.

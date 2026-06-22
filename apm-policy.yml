@@ -1,6 +1,6 @@
 # Storefront repo-level APM policy override.
 #
-# Inherits DevExpGbb/.github/apm-policy.yml (org root) via `extends: org`.
+# Inherits hackathon-brown-eagle-55/.github/apm-policy.yml (org root) via `extends: org`.
 # Per APM tighten-only merge rules, this file can ONLY narrow allow lists,
 # add deny entries, escalate enforcement, and shorten depth limits — never
 # relax a parent constraint.
@@ -24,7 +24,7 @@ dependencies:
   # We redeclare the security-baseline floor here so Beat 1 (drop pin) fires
   # the `required-packages` violation as expected.
   require:
-    - "DevExpGbb/zava-agent-config/plugins/secure-baseline"
+    - "hackathon-brown-eagle-55/zava-agent-config/plugins/secure-baseline"
 
 # WORKAROUND (apm-cli inheritance gap): `extends: org` does NOT layer
 # `unmanaged_files` from the parent. Until that's fixed upstream, we

@@ -98,6 +98,13 @@ permissions:
 imports:
   - uses: shared/apm.md
     with:
+      # Slim bundle: this agent runs Copilot CLI in CI, so only the copilot
+      # harness needs packing. shared/apm.md's default `target: all` tries to
+      # install every harness — including copilot-cowork, which requires
+      # --global and fails in isolated project scope (apm install exit 1).
+      # Mirror pr-review-panel.md's fix. See microsoft/apm (target=all +
+      # isolated malfunction with global-only targets).
+      target: copilot
       packages:
         - microsoft/apm#main
 

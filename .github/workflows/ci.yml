@@ -14,7 +14,7 @@ permissions:
 jobs:
   apm-audit:
     name: APM audit (required)
-    uses: DevExpGbb/zava-agent-config/.github/workflows/apm-audit.yml@v5.1.2
+    uses: hackathon-brown-eagle-55/zava-agent-config/.github/workflows/apm-audit.yml@v5.1.2
 
   build:
     name: Build & test (placeholder)

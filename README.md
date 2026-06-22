@@ -1,8 +1,8 @@
 # Zava Storefront
 
-> **Part of the [Zava Workshop Kit](https://github.com/DevExpGbb/zava-workshop-kit)** — deploy this repo + the rest of the workshop bundle into your own org with one script.
+> **Part of the [Zava Workshop Kit](https://github.com/hackathon-brown-eagle-55/zava-workshop-kit)** — deploy this repo + the rest of the workshop bundle into your own org with one script.
 
-Customer-facing storefront for Zava (fictional e-commerce reference app, used in the [Zava workshop bundle](https://github.com/DevExpGbb/zava-workshop-kit)).
+Customer-facing storefront for Zava (fictional e-commerce reference app, used in the [Zava workshop bundle](https://github.com/hackathon-brown-eagle-55/zava-workshop-kit)).
 
 ## Stack
 
@@ -16,7 +16,7 @@ Customer-facing storefront for Zava (fictional e-commerce reference app, used in
 
 ## Agentic SDLC config
 
-This repo pins **`DevExpGbb/zava-agent-config@^1.0.0`** via [`apm.yml`](apm.yml). That gives every contributor:
+This repo pins **`hackathon-brown-eagle-55/zava-agent-config@^1.0.0`** via [`apm.yml`](apm.yml). That gives every contributor:
 
 - 🛡️ The Zava `secure-coding-base`, `ci-cd-golden-paths`, `docs-style-guide` instructions
 - 🤖 The `meeting-to-issue`, `panel-review`, `incident-to-pr` skills
@@ -42,13 +42,13 @@ apm audit                # warn-mode
 
 ## See also
 
-- [`zava-agent-config`](https://github.com/DevExpGbb/zava-agent-config) — the central agentic primitives package
-- [PLATFORM.md](https://github.com/DevExpGbb/agentic-sdlc-ref/blob/main/PLATFORM.md) — platform reference
-- [Lloyds Phase 1 delivery plan](https://github.com/DevExpGbb/agentic-sdlc-ref/blob/main/delivery/lloyds-ph1-delivery-plan.md)
+- [`zava-agent-config`](https://github.com/hackathon-brown-eagle-55/zava-agent-config) — the central agentic primitives package
+- [PLATFORM.md](https://github.com/hackathon-brown-eagle-55/agentic-sdlc-ref/blob/main/PLATFORM.md) — platform reference
+- [Lloyds Phase 1 delivery plan](https://github.com/hackathon-brown-eagle-55/agentic-sdlc-ref/blob/main/delivery/lloyds-ph1-delivery-plan.md)
 
 ## Workshop usage
 
-This repo is the **canonical target** for the [`zava-skills-workshop-template`](https://github.com/DevExpGbb/zava-skills-workshop-template) workshop. The workshop tracks reference these files:
+This repo is the **canonical target** for the [`zava-skills-workshop-template`](https://github.com/hackathon-brown-eagle-55/zava-skills-workshop-template) workshop. The workshop tracks reference these files:
 
 - `lib/cart.ts`, `lib/orders.ts`, `lib/search.ts` — Track 1 (test-improver) and Track 2 (docs-generator) targets. 5 / 5 / 2 exported functions, intentionally undocumented + intentionally under-tested.
 - `tests/*.test.ts` — vitest specs (`npm test`) — the oracle for Track 1's "must still pass" gate.

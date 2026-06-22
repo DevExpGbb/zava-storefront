@@ -1,10 +1,10 @@
 lockfile_version: '1'
-generated_at: '2026-05-07T23:57:26.502703+00:00'
-apm_version: 0.12.2
+generated_at: '2026-06-17T14:02:13.288703+00:00'
+apm_version: 0.20.0
 dependencies:
-- repo_url: DevExpGbb/zava-agent-config
+- repo_url: hackathon-brown-eagle-55/zava-agent-config
   host: github.com
-  resolved_commit: 7a12679a9e1f55e06d16616ed0244b5fdeaad3da
+  resolved_commit: 0bb5ceb59aa8d7543c1cc26833abf564b35c2ca0
   resolved_ref: v5.0.1
   virtual_path: plugins/code-kit
   is_virtual: true
@@ -13,20 +13,23 @@ dependencies:
   - .github/agents/architect.agent.md
   deployed_file_hashes:
     .github/agents/architect.agent.md: sha256:de74154b914769a13b4dc594f998db0e745280f8890af1ca526f10b10d0ecc5a
-  content_hash: sha256:bb505597414ca6787bb4cee8075c1d2f0ebc63c358792c2f4a7a5aa4dfe108a9
-- repo_url: DevExpGbb/zava-agent-config
+  content_hash: sha256:6e3a3bd619086525176725ff4763e7376cbbd02e3560d3c0b36fdbbfcdc14a94
+- repo_url: hackathon-brown-eagle-55/zava-agent-config
   host: github.com
-  resolved_commit: 7a12679a9e1f55e06d16616ed0244b5fdeaad3da
+  resolved_commit: 0bb5ceb59aa8d7543c1cc26833abf564b35c2ca0
   resolved_ref: v5.0.1
   virtual_path: plugins/operate-kit
   is_virtual: true
   package_type: marketplace_plugin
   deployed_files:
   - .agents/skills/incident-to-pr
-  content_hash: sha256:0f69245549bb931ddd009f09c736d8f63998f64fb6dc1a0a9ce133eb86e76335
-- repo_url: DevExpGbb/zava-agent-config
+  - .agents/skills/incident-to-pr/SKILL.md
+  deployed_file_hashes:
+    .agents/skills/incident-to-pr/SKILL.md: sha256:12d37b309aa7afad9507d5f92cfc26526ac25d5193831fde1062bc05c2532a25
+  content_hash: sha256:7cc095e28a9e64db65a1c4b858a455342ec09e3f36c45fd9fb0766523cab78ea
+- repo_url: hackathon-brown-eagle-55/zava-agent-config
   host: github.com
-  resolved_commit: 7a12679a9e1f55e06d16616ed0244b5fdeaad3da
+  resolved_commit: 0bb5ceb59aa8d7543c1cc26833abf564b35c2ca0
   resolved_ref: v5.0.1
   virtual_path: plugins/release-kit
   is_virtual: true
@@ -34,21 +37,24 @@ dependencies:
   deployed_files:
   - .github/instructions/ci-cd-golden-paths.instructions.md
   deployed_file_hashes:
-    .github/instructions/ci-cd-golden-paths.instructions.md: sha256:2fbe12eb300b75f8bc09ddb461c252a48c5b355c4aaf44f689d3b56b2086bb20
-  content_hash: sha256:68d410244792d9650337f5ba9debf2233a3830fc0c4e5004ef4db90acb8c8be3
-- repo_url: DevExpGbb/zava-agent-config
+    .github/instructions/ci-cd-golden-paths.instructions.md: sha256:0892be97ef1819b550561c51f40e8e5344e4e8732d2593aa70d7b8d7759d38da
+  content_hash: sha256:5d0f589b68f4b7749e35f0f0438ab0539612cc147c33433f577025c61e68bcc7
+- repo_url: hackathon-brown-eagle-55/zava-agent-config
   host: github.com
-  resolved_commit: 7a12679a9e1f55e06d16616ed0244b5fdeaad3da
+  resolved_commit: 0bb5ceb59aa8d7543c1cc26833abf564b35c2ca0
   resolved_ref: v5.0.1
   virtual_path: plugins/review-kit
   is_virtual: true
   package_type: marketplace_plugin
   deployed_files:
   - .agents/skills/panel-review
-  content_hash: sha256:6c34beac889dab8124b1c8f08783390264d976764d9b9012af3d0ea069ec5b22
-- repo_url: DevExpGbb/zava-agent-config
+  - .agents/skills/panel-review/SKILL.md
+  deployed_file_hashes:
+    .agents/skills/panel-review/SKILL.md: sha256:8e33b93b22e9f7eaa589d22012e220310f7897aa846936c9d5ea5eec04640b15
+  content_hash: sha256:4e0c2476a3309da079770fddb3ad6742c4506382acdde5ea1b33596d72ca8b95
+- repo_url: hackathon-brown-eagle-55/zava-agent-config
   host: github.com
-  resolved_commit: 7a12679a9e1f55e06d16616ed0244b5fdeaad3da
+  resolved_commit: 0bb5ceb59aa8d7543c1cc26833abf564b35c2ca0
   resolved_ref: v5.0.1
   virtual_path: plugins/secure-baseline
   is_virtual: true
@@ -61,4 +67,4 @@ dependencies:
     .github/agents/security.agent.md: sha256:8092bef9ff98c66251754d33e9b241f4f25293578b31e258cee88124c80590c1
     .github/instructions/docs-style-guide.instructions.md: sha256:cad1b1161ef8d53e08038302b6c8cd14dbc03f75fa7ec267edf3d1f07824a739
     .github/instructions/secure-coding-base.instructions.md: sha256:f0a32226b87082a4e4cad08a070e55c177e23e0ef728329973634c84c3a81d14
-  content_hash: sha256:b415e1715cf537747ea8312137fa129a154e46abfe50f4a97594fd40b0f1befe
+  content_hash: sha256:b3593afd809da8ad5de8b8736228bb4584d71c72f249a9acb5ebf7bf712069c8

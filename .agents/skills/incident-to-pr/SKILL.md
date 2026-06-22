@@ -100,7 +100,7 @@ One PR with this shape:
 
 ```
 > Use incident-to-pr on docs/postmortems/2025-05-08-checkout-payment-timeout.md.
-> Target repo: DevExpGbb/zava-checkout.
+> Target repo: hackathon-brown-eagle-55/zava-checkout.
 ```
 
 ## See also

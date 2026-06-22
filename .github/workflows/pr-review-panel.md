@@ -118,7 +118,7 @@ imports:
       packages:
         # Pin to the in-org zava-agent-config review-kit plugin.
         # Same-org pin avoids cross-org token scope issues for the
-        # workshop fork. Canonical source is DevExpGbb/zava-agent-config;
+        # workshop fork. Canonical source is hackathon-brown-eagle-55/zava-agent-config;
         # this org mirrors the v5.0.1 release.
         # apm-action installs this plugin into the workflow workspace.
         # Note: review-kit's panel-review skill dispatches to architect
@@ -126,7 +126,7 @@ imports:
         # supplied by the consumer repo's own apm.yml install at
         # workspace level (includes: auto), merged in via apm-action's
         # default isolated:false.
-        - DevExpGbb/zava-agent-config/plugins/review-kit#v5.0.1
+        - hackathon-brown-eagle-55/zava-agent-config/plugins/review-kit#v5.0.1
 
 tools:
   github:
