@@ -1,0 +1,36 @@
+{
+  "$schema": "https://agentskills.io/schemas/triggers.json",
+  "_comment": "Trigger evals for the framework-modernizer dispatch description per agentskills.io optimizing-descriptions spec. ~20 queries split 60/40 train/val. Validation split is the ship gate: ≥0.5 trigger rate on should-trigger AND <0.5 trigger rate on near-miss should-NOT-trigger. Run via the harness's dispatcher (NOT the skill body) — the question is whether the description matches.",
+  "skill": "framework-modernizer",
+  "split": {"train_pct": 60, "val_pct": 40},
+  "should_trigger": [
+    {"split": "train", "query": "Bump express to v5"},
+    {"split": "train", "query": "Upgrade express to 5"},
+    {"split": "train", "query": "Migrate to express 5"},
+    {"split": "train", "query": "Express deprecation warnings — fix them"},
+    {"split": "train", "query": "We're stuck on express 4"},
+    {"split": "train", "query": "Our app uses app.del — is that still ok in modern express?"},
+    {"split": "val", "query": "Path-to-regexp is showing warnings about :id? — what changed?"},
+    {"split": "val", "query": "Major dependabot PR open: express ^4 → ^5. Is it safe to merge?"},
+    {"split": "val", "query": "What breaks if we go from express 4 to 5?"},
+    {"split": "val", "query": "Need a migration plan for express 5 upgrade"}
+  ],
+  "should_not_trigger": [
+    {"split": "train", "query": "Bump express to v4.18.3", "reason": "patch within 4.x — not a major migration"},
+    {"split": "train", "query": "Migrate from Fastify to Hapi", "reason": "different framework"},
+    {"split": "train", "query": "Upgrade Next.js to 15", "reason": "different framework"},
+    {"split": "train", "query": "Add express middleware for auth", "reason": "regular dev work, not migration"},
+    {"split": "train", "query": "Why is express slow under load?", "reason": "performance, not migration"},
+    {"split": "train", "query": "How do I install express?", "reason": "greenfield setup"},
+    {"split": "val", "query": "Configure CORS in express", "reason": "regular dev work"},
+    {"split": "val", "query": "Express vs Fastify — which to choose for a new project?", "reason": "advisory, not migration"},
+    {"split": "val", "query": "Run npm audit on our express app", "reason": "security audit — different skill"},
+    {"split": "val", "query": "Express app has a memory leak — help debug", "reason": "debugging, not migration"}
+  ],
+  "ship_gate": {
+    "_comment": "Validation split is the gate. Train split is for description tuning iterations.",
+    "should_trigger_rate_min": 0.5,
+    "should_not_trigger_rate_max": 0.5,
+    "evaluated_on": "val"
+  }
+}
