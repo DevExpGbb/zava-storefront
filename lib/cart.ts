@@ -15,6 +15,11 @@ export interface CartTotals {
   totalCents: number;
 }
 
+const PROMO_CODE_PERCENTAGES: Record<string, number> = {
+  WELCOME10: 10,
+  VIP25: 25,
+};
+
 export function addItem(cart: CartItem[], item: CartItem): CartItem[] {
   const existing = cart.findIndex((c) => c.productId === item.productId);
   if (existing === -1) return [...cart, item];
@@ -27,13 +32,22 @@ export function removeItem(cart: CartItem[], productId: string): CartItem[] {
   return cart.filter((c) => c.productId !== productId);
 }
 
-export function applyDiscount(subtotalCents: number, code: string | null): number {
+export function resolvePromoCodePercent(subtotalCents: number, code: string | null): number {
   if (!code) return 0;
-  const upper = code.toUpperCase();
-  if (upper === 'WELCOME10') return Math.floor(subtotalCents * 0.10);
-  if (upper === 'VIP25' && subtotalCents >= 10_000) return Math.floor(subtotalCents * 0.25);
-  if (upper === 'FREESHIP') return 0;
-  return 0;
+  const normalized = code.toUpperCase().trim();
+  if (normalized === 'VIP25' && subtotalCents < 10_000) return 0;
+  return PROMO_CODE_PERCENTAGES[normalized] ?? 0;
+}
+
+export function applyPercentageDiscount(subtotalCents: number, percent: number): number {
+  if (!Number.isFinite(percent)) return 0;
+  const boundedPercent = Math.max(0, Math.min(100, percent));
+  return Math.floor(subtotalCents * (boundedPercent / 100));
+}
+
+export function applyDiscount(subtotalCents: number, code: string | null): number {
+  const percent = resolvePromoCodePercent(subtotalCents, code);
+  return applyPercentageDiscount(subtotalCents, percent);
 }
 
 export function computeTax(taxableCents: number, region: string): number {

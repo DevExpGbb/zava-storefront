@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { addItem, removeItem, totalize } from '../lib/cart';
+import { addItem, applyPercentageDiscount, removeItem, resolvePromoCodePercent, totalize } from '../lib/cart';
 
 describe('cart · happy path', () => {
   it('adds new items', () => {
@@ -28,6 +28,19 @@ describe('cart · happy path', () => {
     expect(totals.subtotalCents).toBe(2000);
     expect(totals.taxCents).toBe(400);
     expect(totals.totalCents).toBe(2400);
+  });
+
+  it('resolves promo code percentage with threshold checks', () => {
+    expect(resolvePromoCodePercent(5_000, 'WELCOME10')).toBe(10);
+    expect(resolvePromoCodePercent(9_999, 'VIP25')).toBe(0);
+    expect(resolvePromoCodePercent(10_000, 'VIP25')).toBe(25);
+    expect(resolvePromoCodePercent(5_000, 'UNKNOWN')).toBe(0);
+  });
+
+  it('applies percentage discounts with clamping', () => {
+    expect(applyPercentageDiscount(10_000, 10)).toBe(1_000);
+    expect(applyPercentageDiscount(10_000, 500)).toBe(10_000);
+    expect(applyPercentageDiscount(10_000, -5)).toBe(0);
   });
 });
 
