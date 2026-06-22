@@ -27,6 +27,19 @@ export function removeItem(cart: CartItem[], productId: string): CartItem[] {
   return cart.filter((c) => c.productId !== productId);
 }
 
+/** Known promo codes, keyed by their canonical upper-case form. */
+const KNOWN_CODES = new Set(['WELCOME10', 'VIP25', 'FREESHIP']);
+
+/**
+ * Returns true when `code` is a recognised promo code.
+ *
+ * @param code - The promo code to test (case-insensitive).
+ * @returns `true` if the code is recognised, `false` otherwise.
+ */
+export function isKnownPromoCode(code: string): boolean {
+  return KNOWN_CODES.has(code.toUpperCase());
+}
+
 export function applyDiscount(subtotalCents: number, code: string | null): number {
   if (!code) return 0;
   const upper = code.toUpperCase();
