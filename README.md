@@ -26,6 +26,42 @@ This repo pins **`DevExpGbb/zava-agent-config@^1.0.0`** via [`apm.yml`](apm.yml)
 
 Run `apm install` after cloning to materialize them into your harness.
 
+## API endpoints
+
+| Method | Path | Description |
+|--------|------|-------------|
+| GET | `/api/products` | List products (supports `limit` and `offset` query params) |
+| POST | `/api/promo-codes/apply` | Apply a promo code to a cart and return full totals |
+
+### POST /api/promo-codes/apply
+
+Validates a promo code and returns the cart totals with the percentage discount applied.
+
+**Request body**
+
+```json
+{
+  "code": "WELCOME10",
+  "cart": [{ "productId": "p1", "quantity": 2, "unitPriceCents": 1000 }],
+  "region": "GB"
+}
+```
+
+**Response (200)**
+
+```json
+{
+  "code": "WELCOME10",
+  "subtotalCents": 2000,
+  "discountCents": 200,
+  "taxCents": 360,
+  "totalCents": 2160
+}
+```
+
+Returns `422` with `{ "error": "unknown_promo_code" }` when the code is not recognised.
+See [`docs/api/promo-codes.yaml`](docs/api/promo-codes.yaml) for the full OpenAPI spec.
+
 ## Local dev
 
 ```bash

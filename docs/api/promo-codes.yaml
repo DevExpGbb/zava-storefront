@@ -1,0 +1,125 @@
+openapi: 3.1.0
+info:
+  title: Zava Storefront API — Promo Codes
+  version: 1.0.0
+
+paths:
+  /api/promo-codes/apply:
+    post:
+      summary: Apply a promo code to a cart
+      description: >
+        Validates the supplied promo code and returns the full cart totals
+        (subtotal, discount, tax, and final total) with the percentage discount
+        applied. Returns 422 when the code is not recognised.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplyPromoRequest'
+            examples:
+              welcome10:
+                summary: 10 % welcome discount
+                value:
+                  code: WELCOME10
+                  cart:
+                    - productId: p1
+                      quantity: 2
+                      unitPriceCents: 1000
+                  region: GB
+      responses:
+        '200':
+          description: Discount applied successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CartTotalsResponse'
+              examples:
+                welcome10:
+                  value:
+                    code: WELCOME10
+                    subtotalCents: 2000
+                    discountCents: 200
+                    taxCents: 360
+                    totalCents: 2160
+        '400':
+          description: Request body failed schema validation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                invalid_request:
+                  value:
+                    error: invalid_request
+        '422':
+          description: Promo code is not recognised
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                unknown_code:
+                  value:
+                    error: unknown_promo_code
+
+components:
+  schemas:
+    CartItem:
+      type: object
+      required: [productId, quantity, unitPriceCents]
+      properties:
+        productId:
+          type: string
+          minLength: 1
+        quantity:
+          type: integer
+          minimum: 1
+          maximum: 99
+        unitPriceCents:
+          type: integer
+          minimum: 0
+
+    ApplyPromoRequest:
+      type: object
+      required: [code, cart, region]
+      additionalProperties: false
+      properties:
+        code:
+          type: string
+          minLength: 1
+          maxLength: 50
+          description: Promo code to apply (case-insensitive).
+        cart:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/CartItem'
+        region:
+          type: string
+          minLength: 2
+          maxLength: 8
+          description: ISO region/country code used to compute tax (e.g. GB, DE, US-CA).
+
+    CartTotalsResponse:
+      type: object
+      required: [code, subtotalCents, discountCents, taxCents, totalCents]
+      properties:
+        code:
+          type: string
+          description: Canonical upper-case form of the applied promo code.
+        subtotalCents:
+          type: integer
+        discountCents:
+          type: integer
+        taxCents:
+          type: integer
+        totalCents:
+          type: integer
+
+    ErrorResponse:
+      type: object
+      required: [error]
+      properties:
+        error:
+          type: string
