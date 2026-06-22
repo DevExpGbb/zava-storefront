@@ -1,0 +1,48 @@
+{
+  "$schema": "https://agentskills.io/schemas/evals.json",
+  "_comment": "Content evals for framework-modernizer per agentskills.io spec. Each case runs TWICE: with the skill loaded (with_skill) and without (without_skill) to make the value delta measurable. Assertions are added AFTER the first iteration (you don't know what 'good' looks like until you see actual output). Grading is LLM-judge for holistic checks + script for mechanical checks. Workspace: framework-modernizer-workspace/iteration-N/<case-id>/{with_skill,without_skill}/{outputs,timing.json,grading.json}",
+  "skill": "framework-modernizer",
+  "cases": [
+    {
+      "id": "fm-c1-explicit-migration",
+      "prompt": "Migrate this Express 4 app to Express 5. Audit for breaking changes, apply safe fixes in place, and write a migration plan I can hand to my team.",
+      "files": ["fixtures/express4-app/"],
+      "expected_output": "Discovers ≥8 known patterns from references/express-4-to-5-breaking-changes.md (BC-001, BC-002, BC-006, BC-007, BC-101, BC-102, BC-201, BC-202). Applies AUTOFIX edits in place for the 4 AUTOFIX patterns. Writes MIGRATION-PLAN.md at fixture root with three phases. Every MANUAL item cites the official Express 5 migration guide URL. Console summary reports counts per class.",
+      "assertions": [
+        {"type": "file_exists", "path": "MIGRATION-PLAN.md", "kind": "script"},
+        {"type": "contains_all_of", "field": "outputs/MIGRATION-PLAN.md", "values": ["Phase 1", "Phase 2", "Phase 3", "expressjs.com/en/guide/migrating-5"], "kind": "script"},
+        {"type": "no_invented_bc_ids", "valid_ids_source": "references/express-4-to-5-breaking-changes.md", "kind": "script"},
+        {"type": "llm_judge", "rubric": "Are all autofix edits semantically correct (e.g. app.del → app.delete, res.sendfile → res.sendFile)? PASS only if all 4 AUTOFIX patterns are correctly transformed without breaking surrounding code."}
+      ]
+    },
+    {
+      "id": "fm-c2-implicit-migration",
+      "prompt": "We're stuck on Express 4 and the deprecation warnings keep piling up. What would it take to move to v5?",
+      "files": ["fixtures/express4-app/"],
+      "expected_output": "Skill activates despite indirect phrasing (no 'migrate' verb). Produces a structured plan grounded in the catalog. Does NOT fabricate breaking-change IDs from training data. The without_skill baseline is expected to produce vague advice or a hallucinated breaking-change list — that delta is the evidence the skill is adding value.",
+      "assertions": [
+        {"type": "skill_activated", "kind": "script"},
+        {"type": "no_invented_bc_ids", "valid_ids_source": "references/express-4-to-5-breaking-changes.md", "kind": "script"},
+        {"type": "llm_judge", "rubric": "Compare with_skill vs without_skill output blind. Which one would a senior engineer trust more for an actual migration? PASS if with_skill is judged more grounded, more specific, and less likely to mislead."}
+      ]
+    },
+    {
+      "id": "fm-c3-near-miss-decline",
+      "prompt": "Audit our Fastify codebase for upgrade issues from v4 to v5.",
+      "files": ["fixtures/express4-app/"],
+      "expected_output": "Skill correctly declines (per the 'Do NOT use this skill when' clause: 'The repo is not Express'). Surfaces that this skill is Express-only and suggests the user check for a Fastify-specific migration tool. Does NOT attempt to apply Express patterns to Fastify code.",
+      "assertions": [
+        {"type": "skill_declines", "kind": "script"},
+        {"type": "no_file_writes", "files": ["MIGRATION-PLAN.md"], "kind": "script"},
+        {"type": "llm_judge", "rubric": "Did the skill cleanly hand off without contaminating the user's Fastify context with Express-specific advice? PASS if the decline is explicit and useful."}
+      ]
+    }
+  ],
+  "iteration_workflow": {
+    "_comment": "Per agentskills.io: run each case twice (with_skill, without_skill) in subagent-isolated contexts. Capture outputs/, timing.json, grading.json per run. Aggregate to benchmark.json. Add assertions only AFTER the first iteration when you've seen what real output looks like. Iterate the skill body, NOT the assertions, when assertions fail.",
+    "workspace": "framework-modernizer-workspace/iteration-{N}/{case-id}/{with_skill|without_skill}/",
+    "outputs_per_run": ["outputs/", "timing.json", "grading.json"],
+    "aggregate": "framework-modernizer-workspace/iteration-{N}/benchmark.json",
+    "ship_gate": "All 3 cases PASS with_skill AND show measurable delta vs without_skill. If with_skill ≈ without_skill, the skill is not adding value — redesign or delete."
+  }
+}
